@@ -12,18 +12,18 @@ import Paging from "@/components/features/paging"
 export default function ShopPage() {
     return (
         <>
-            <div className='flex justify-between'>
+            <div className='flex justify-between p-8'>
                 <div className="flex justify-start place-items-center gap-2">
                     <Logo />
                 </div>
-                <div className="flex justify-center ">
+                <div className="flex justify-center place-items-center gap-1">
                     <Search />
                 </div>
                 <div className="flex justify-end">
                 </div>
             </div>
-            <div className="flex">
-                <p className='flex text-2xl font-bold h-14 place-items-end'>Results for "입력값"</p>
+            <div className="flex px-8">
+                <p className='flex text-2xl font-bold place-items-end'>Results for "입력값"</p>
             </div>
             <div className="flex max-h-[70vh] ">
                 <div className="grid grid-rows-5 grid-flow-col grid-cols-[0.5fr_2fr_0.5fr] ">

@@ -9,7 +9,7 @@ import Footer from "@/components/layout/footer"
 export default function Page() {
     return (
         <>
-            <div className='flex justify-between'>
+            <div className='flex justify-between p-8'>
                 <div className='flex justify-start place-items-center gap-2'>
                     <Logo />
                 </div>
@@ -21,8 +21,8 @@ export default function Page() {
                 </div>
             </div>
 
-            <div className='flex justify-center'>
-                <img src="../images/cat.png" />
+            <div className='flex flex-8 justify-center h-[300px] w-full p-8'>
+                <img src="/images/cat_1.jpg" className='w-full h-full object-cover' />
             </div>
             <div className='flex gap-4 px-8'>
                 <Categories />
