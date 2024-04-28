@@ -1,10 +1,10 @@
 "use client";
-import Logo from "@/components/ui/logo"
-import NavigationBar from "@/components/ui/navigationbar"
-import Search from "@/components/ui/search"
-import Categories from "@/components/ui/categories"
-import PopularProducts from "@/components/ui/popularProducts"
-import Footer from "@/components/ui/footer"
+import Logo from "@/components/layout/logo"
+import NavigationBar from "@/components/layout/navigationbar"
+import Search from "@/components/features/search"
+import Categories from "@/components/features/categories"
+import PopularProducts from "@/components/features/popularProducts"
+import Footer from "@/components/layout/footer"
 
 export default function Page() {
     return (
