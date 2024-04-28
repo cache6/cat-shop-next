@@ -1,6 +1,4 @@
 "use client"
-import Logo from "@/components/layout/logo"
-import Search from "@/components/features/search"
 import FilterOptions from "@/components/features/filterOptions"
 import { Button } from "@/components/ui/button"
 import Lists from "@/components/features/lists"
@@ -8,20 +6,12 @@ import ProductCategories from "@/components/features/productCategories"
 import Dropdown from "@/components/features/dropdown"
 import Sort from "@/components/features/sort"
 import Paging from "@/components/features/paging"
+import Header from "@/components/layout/header"
 
 export default function ShopPage() {
     return (
         <>
-            <div className='flex justify-between p-8'>
-                <div className="flex justify-start place-items-center gap-2">
-                    <Logo />
-                </div>
-                <div className="flex justify-center place-items-center gap-1">
-                    <Search />
-                </div>
-                <div className="flex justify-end">
-                </div>
-            </div>
+            <Header />
             <div className="flex px-8">
                 <p className='flex text-2xl font-bold place-items-end'>Results for "입력값"</p>
             </div>
@@ -49,7 +39,6 @@ export default function ShopPage() {
                                 <Sort />
                                 <Dropdown />
                             </div>
-
                         </div>
                     </div>
                     <div className='row-span-3 col-span-1'>
@@ -62,8 +51,6 @@ export default function ShopPage() {
                             <Paging />
                         </div>
                     </div>
-
-
                 </div>
             </div >
         </>

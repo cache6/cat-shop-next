@@ -8,9 +8,9 @@ interface MenuLinkProps {
 
 const MenuLink: React.FC<MenuLinkProps> = ({ href, children }) => {
     return (
-        <div>
+        <>
             <Link href={href}>{children}</Link>
-        </div>
+        </>
     );
 };
 
