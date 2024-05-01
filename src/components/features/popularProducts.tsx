@@ -11,9 +11,12 @@ const PopularProducts = () => {
     ];
 
     return (
-        <div className='flex flex-col items-center'>
-            <Products products={popularProducts} />
-        </div>
+        <>
+            <div className='flex px-8 font-bold'>추천 상품</div>
+            <div className='flex flex-col items-center px-8 py-4'>
+                <Products products={popularProducts} />
+            </div>
+        </>
     );
 };
 

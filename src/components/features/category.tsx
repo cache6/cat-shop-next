@@ -9,13 +9,11 @@ interface CategoryProps {
 const Category = ({ src, name }: CategoryProps) => {
     return (
         <>
-            <div className='flex-col items-center'>
-                <Link href="/" className='text-center' >{name}</Link>
-                <Link href="/">
-                    <img src={src} alt={name} />
-                </Link>
+            <Link href="/" className='text-center' >{name}</Link>
+            <Link href="/">
+                <img src={src} alt={name} />
+            </Link>
 
-            </div>
         </>
     );
 };

@@ -32,7 +32,7 @@ const Lists = () => {
     ]
     return (
         <>
-            <div className='flex flex-row gap-4'>
+            <div className='flex flex-row gap-8'>
                 {Lists.map((lists, index) => (
                     <List key={index} image={lists.image} title={lists.title} description={lists.description} tag={lists.tag} />
                 ))}

@@ -10,9 +10,13 @@ const Categories = () => {
 
     return (
         <>
-            {categories.map((category, index) => (
-                <Category key={index} src={category.src} name={category.name} />
-            ))}
+            <div className='flex p-8 gap-4 text-center'>
+                {categories.map((category, index) => (
+                    <div className='flex flex-col items-center border border-gray-300 rounded-md p-4 shadow focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition duration-150 ease-in-out'>
+                        <Category key={index} src={category.src} name={category.name} />
+                    </div>
+                ))}
+            </div>
         </>
     );
 };

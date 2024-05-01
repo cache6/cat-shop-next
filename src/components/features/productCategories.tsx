@@ -1,13 +1,27 @@
 import React from 'react';
+import Sort from '@/components/features/sort';
+import Dropdown from '@/components/features/dropdown';
 
 const ProductCategories = () => {
     return (
         <>
-            <div className="flex justify-center gap-12">
-                <button><p>★</p></button>
-                <button><p>Top picks</p></button>
-                <button><p>New arrivals</p></button>
-                <button><p>Best sellers</p></button>
+            <div className="flex flex-1 gap-8 px-8 border-b border-gray-300 pb-2">
+                <div>
+                    <button><p>★</p></button>
+                </div>
+                <div>
+                    <button><p>Top picks</p></button>
+                </div>
+                <div>
+                    <button><p>New arrivals</p></button>
+                </div>
+                <div>
+                    <button><p>Best sellers</p></button>
+                </div>
+                <div className='flex flex-1 justify-end'>
+                    <Sort />
+                    <Dropdown />
+                </div>
             </div>
         </>
     );

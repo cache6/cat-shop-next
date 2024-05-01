@@ -1,43 +1,26 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import FilterOption from './filterOption'; // 경로는 실제 프로젝트 구조에 맞게 조정하세요.
 
-interface Option {
-    id: string;
-    label: string;
-}
+// 예시 데이터, 실제 데이터 구조에 맞게 조정해야 합니다.
+const filterData = {
+    "Category": ["Books", "Electronics", "Clothing"],
+    "Price Range": ["$1-$20", "$21-$50", "$51-$100"]
+};
 
 const FilterOptions = () => {
-    const [options, setOptions] = useState<Option[]>([]);
-    const [title, setTitle] = useState('');
-    const [expanded, setExpanded] = useState(true); // 접기/열기 상태를 관리하는 상태
-
-    useEffect(() => {
-        setOptions([
-            { id: 'opt1', label: 'Option 1' },
-            { id: 'opt2', label: 'Option 2' },
-            { id: 'opt3', label: 'Option 3' }
-        ]);
-        setTitle('Filter Options');
-    }, []);
-
-    const toggleExpand = () => {
-        setExpanded(!expanded);
-    };
-
     return (
-        <>
-            <div className='flex justify-between'>
-                <div>{title}</div>
-                <button onClick={toggleExpand} className="text-sm px-2 py-1 border rounded">
-                    {expanded ? <img src='/images/up_arrow.png' className='w-2 h-2' /> : <img src='/images/down_arrow.png' className='w-2 h-2' />}
-                </button>
-            </div>
-            {expanded && options.map(option => (
-                <div key={option.id} className='flex flex-row gap-2'>
-                    <div><input type="checkbox" id={option.id} /></div>
-                    <div>{option.label}</div>
-                </div>
+        <div className='pb-8'>
+            {Object.entries(filterData).map(([title, options], index) => (
+                <FilterOption
+                    key={index}
+                    title={title}
+                    options={options.map((option, idx) => ({
+                        id: `${title}-${idx}`, // 고유 ID 생성
+                        label: option
+                    }))}
+                />
             ))}
-        </>
+        </div>
     );
 };
 
