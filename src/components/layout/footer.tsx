@@ -11,7 +11,9 @@ const Footer = () => {
             <a href="https://www.flaticon.com/kr/free-icons/-" title="아래쪽 화살표 아이콘">아래쪽 화살표 아이콘 제작자: Google - Flaticon</a>
             <a href="https://www.flaticon.com/kr/free-icons/" title="모두 아이콘">모두 아이콘 제작자: Dreamstale - Flaticon</a>
             <a href="https://www.flaticon.com/kr/free-icons/" title="윤곽 아이콘">윤곽 아이콘 제작자: Freepik - Flaticon</a>
-            <a href="https://www.flaticon.com/kr/free-icons/" title="그리드 아이콘">그리드 아이콘 제작자: Dreamstale - Flaticon</a> */}
+            <a href="https://www.flaticon.com/kr/free-icons/" title="그리드 아이콘">그리드 아이콘 제작자: Dreamstale - Flaticon</a>
+                <a href="https://kr.freepik.com/icon/application_14311850#fromView=search&page=1&position=29&uuid=1a34e8db-e92c-4035-bbec-7d9bdca67c36">Puckung 제작 아이콘</a>
+                <a href="https://kr.freepik.com/icon/shopping-bag_2956820#fromView=search&page=1&position=0&uuid=36066ed2-282e-4695-9343-62fb71d49d01">CreativeCons 제작 아이콘</a> */}
             </div>
         </>
     );
