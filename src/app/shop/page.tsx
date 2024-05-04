@@ -26,7 +26,23 @@ export default function ShopPage() {
                         <div className="overflow-auto pt-8">
                             <Lists />
                         </div>
-                        <Paging />
+                        <div className="flex flex-row gap-4 pt-8">
+                            <div>
+                                <Button>1</Button>
+                            </div>
+                            <div>
+                                <Button>2</Button>
+                            </div>
+                            <div>
+                                <Button>3</Button>
+                            </div>
+                            <div>
+                                <Button>4</Button>
+                            </div>
+                            <div>
+                                <Button>5</Button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

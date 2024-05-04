@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 export default function PaymentPage() {
     return (
         <>
-            <div className="grid p-8">
+            <div className="grid p-8 overflow-y: scroll">
                 <Header />
                 <div className="flex flex-row gap-4 px-8">
                     <div className="flex flex-1 flex-col gap-4 justify-start pl-16">

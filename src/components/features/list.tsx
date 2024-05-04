@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button } from '../ui/button';
 
 interface ListProps {
     image: string
@@ -20,9 +21,9 @@ const List = ({ image, title, description, tag }: ListProps) => {
                             {tag}
                         </div>
                         <div className="flex justify-end flex-1">
-                            <button className='bg-blue-500 text-white rounded-md px-2 py-1 cursor-pointer'>
+                            <Button>
                                 장바구니 담기
-                            </button>
+                            </Button>
                         </div>
                     </div>
                 </div>
