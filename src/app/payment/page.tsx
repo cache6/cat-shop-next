@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 export default function PaymentPage() {
     return (
         <>
-            <div className="grid p-8 overflow-y: scroll">
+            <div className="grid p-8">
                 <Header />
                 <div className="flex flex-row gap-4 px-8">
                     <div className="flex flex-1 flex-col gap-4 justify-start pl-16">
@@ -66,7 +66,7 @@ export default function PaymentPage() {
                             Enter Shipping Address
                         </div>
                         <div className="text-sm font-bold">
-                            Recipient's Address
+                            Recipient&apos;s Address
                         </div>
                         <div>
                             <input type="text" placeholder="Enter Address" className='w-full border border-gray-300 rounded-md p-3 shadow focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition duration-150 ease-in-out' />

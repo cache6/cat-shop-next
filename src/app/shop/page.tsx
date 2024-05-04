@@ -11,7 +11,7 @@ export default function ShopPage() {
         <>
             <div className='grid p-8'>
                 <Header />
-                <p className='text-2xl font-bold pb-4'>Results for "입력값"</p>
+                <p className='text-2xl font-bold pb-4'>Results for &quot;입력값&quot;</p>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div className="md:col-span-1 max-w-sm">
                         <FilterOptions />
