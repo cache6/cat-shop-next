@@ -1,11 +1,21 @@
 "use client"
+import React, { useState, useCallback, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
-import React, { useState, useCallback } from 'react';
 import { Button } from "@/components/atoms/button"
 import Lists from "@/components/todo/lists"
 import ProductCategories from "@/components/todo/productCategories"
 import Header from "@/components/organisms/header"
 import FilterOptionList from "@/components/organisms/filterOptionList"
+
+function KeywordDisplay() {
+    const searchParams = useSearchParams();
+    const keyword = searchParams.get("keyword")!;
+    return (
+        <div>
+            {keyword ? <div className='text-2xl font-bold pb-4 px-8'>Results for &quot;{keyword}&quot;</div> : <div className='py-6'></div>}
+        </div>
+    );
+}
 
 export default function ShopPage() {
     const [, setInputValue] = useState('');
@@ -13,20 +23,18 @@ export default function ShopPage() {
     const handleInputValue = (value: string) => {
         setInputValue(value);
     }
-    const searchParam = useSearchParams();
-    const keyword = searchParam.get("keyword")!;
 
     const [resetKey, setResetKey] = useState(0);
-
     const clearFilters = useCallback(() => {
-        setResetKey(prevKey => prevKey + 1);  // 키를 변경하여 체크박스 초기화 트리거
+        setResetKey(prevKey => prevKey + 1);
     }, []);
 
     return (
-        <>
+        <Suspense fallback={<div>Loading...</div>}>
             <Header onInputValueChange={handleInputValue} />
-            {keyword ? <div className='text-2xl font-bold pb-4 px-8'>Results for &quot;{keyword}&quot;</div> : <div className='py-6'></div>}
-
+            <Suspense fallback={<div>Loading search parameters...</div>}>
+                <KeywordDisplay />
+            </Suspense>
             <div className="flex flex-row gap-8">
                 <div className="flex pl-8 flex-1 max-w-[24rem]">
                     <div className='flex flex-col w-full'>
@@ -43,6 +51,6 @@ export default function ShopPage() {
                     </div>
                 </div>
             </div>
-        </>
+        </Suspense>
     );
 }
