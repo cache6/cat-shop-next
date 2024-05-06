@@ -1,13 +1,17 @@
 import React from 'react';
-import Logo from '@/components/layout/logo';
-import NavigationBar from '@/components/layout/navigationbar';
-import Search from '@/components/features/search';
+import Logo from '@/components/atoms/logo';
+import NavigationBar from '@/components/todo/navigationbar';
+import Search from '@/components/molecules/search';
 import Link from 'next/link';
 
-const Header = () => {
+interface HeaderProps {
+    onInputValueChange: (value: string) => void;
+}
+
+const Header: React.FC<HeaderProps> = ({ onInputValueChange }) => {
     return (
         <>
-            <div className='flex pb-4 '>
+            <div className='flex py-4 px-8'>
                 <div className='flex flex-1 flex-row pb-4 border-b border-gray-300'>
                     <div className='flex flex-1 justify-start place-items-center gap-2'>
                         <Logo />
@@ -16,7 +20,7 @@ const Header = () => {
                         <NavigationBar />
                     </div>
                     <div className='flex flex-1 justify-end place-items-center gap-1'>
-                        <Search />
+                        <Search onInputValueChange={onInputValueChange} />
                         <Link href='/login'>
                             <img src="/images/login.png" alt="login" className='w-8 h-8' />
                         </Link>

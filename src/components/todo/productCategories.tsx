@@ -1,6 +1,6 @@
 import React from 'react';
-import Sort from '@/components/features/sort';
-import Dropdown from '@/components/features/dropdown';
+import Sort from '@/components/todo/sort';
+import Dropdown from '@/components/todo/dropdown';
 
 const ProductCategories = () => {
     return (

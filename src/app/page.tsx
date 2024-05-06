@@ -1,21 +1,25 @@
 "use client";
-import Categories from "@/components/features/categories"
-import PopularProducts from "@/components/features/popularProducts"
-import Footer from "@/components/layout/footer"
-import Header from "@/components/layout/header"
+import { useState } from "react";
+import CategoryList from "@/components/organisms/categoryList"
+import PopularProducts from "@/components/organisms/popularProductList"
+import Footer from "@/components/organisms/footer"
+import Header from "@/components/organisms/header"
 
 export default function Page() {
+    const [, setInputValue] = useState('');
+
+    const handleInputValue = (value: string) => {
+        setInputValue(value);
+    }
     return (
         <>
-            <div className='grid p-8'>
-                <Header />
-                <div className='flex justify-center h-[300px] px-8'>
-                    <img src="/images/cat_1.jpg" className='w-full h-full object-cover' />
-                </div>
-                <Categories />
-                <PopularProducts />
-                <Footer />
+            <Header onInputValueChange={handleInputValue} />
+            <div className='flex justify-center h-[300px] px-8'> {/* 메인 이미지 */}
+                <img src="/images/cat_main.png" className='w-full h-full object-cover' />
             </div>
+            <CategoryList />
+            <PopularProducts />
+            <Footer />
         </>
     );
 }

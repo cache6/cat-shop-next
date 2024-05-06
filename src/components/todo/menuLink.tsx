@@ -9,9 +9,7 @@ interface MenuLinkProps {
 const MenuLink: React.FC<MenuLinkProps> = ({ href, children }) => {
     return (
         <>
-            <div className='flex gap-4'>
-                <Link href={href}>{children}</Link>
-            </div>
+            <Link href={href}>{children}</Link>
         </>
     );
 };

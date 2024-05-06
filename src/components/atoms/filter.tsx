@@ -1,22 +1,16 @@
 import React, { useState } from 'react';
 
-interface Option {
-    id: string;
-    label: string;
-}
-
-interface FilterOptionProps {
+interface FilterProps {
     title: string;
-    options: Option[];
+    options: { id: string; label: string; }[];
 }
 
-const FilterOption: React.FC<FilterOptionProps> = ({ title, options }) => {
+const Filter: React.FC<FilterProps> = ({ title, options }) => {
     const [expanded, setExpanded] = useState(true);
 
     const toggleExpand = () => {
         setExpanded(!expanded);
-    };
-
+    }
     return (
         <>
             <div className='flex flex-col border border-gray-300 px-8 pb-8 pt-4'>
@@ -40,7 +34,8 @@ const FilterOption: React.FC<FilterOptionProps> = ({ title, options }) => {
                 )}
             </div>
         </>
-    );
-};
+    )
+}
 
-export default FilterOption;
+export default Filter
+
