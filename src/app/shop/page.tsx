@@ -35,6 +35,7 @@ export default function ShopPage() {
             <Suspense fallback={<div>Loading search parameters...</div>}>
                 <KeywordDisplay />
             </Suspense>
+
             <div className="flex flex-row gap-8">
                 <div className="flex pl-8 flex-1 max-w-[24rem]">
                     <div className='flex flex-col w-full'>
