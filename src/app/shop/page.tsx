@@ -27,36 +27,19 @@ export default function ShopPage() {
             <Header onInputValueChange={handleInputValue} />
             {keyword ? <div className='text-2xl font-bold pb-4 px-8'>Results for &quot;{keyword}&quot;</div> : <div className='py-6'></div>}
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 px-8">
-                <div className="md:col-span-1 max-w-sm">
-                    <FilterOptionList resetKey={resetKey} />
-                    <div className="flex justify-center py-4">
-                        <Button className='w-full' onClick={clearFilters}>Clear filters</Button>
+            <div className="flex flex-row gap-8">
+                <div className="flex pl-8 flex-1 max-w-[24rem]">
+                    <div className='flex flex-col w-full'>
+                        <FilterOptionList resetKey={resetKey} />
+                        <div className="justify-center py-4">
+                            <Button className='w-full' onClick={clearFilters}>Clear filters</Button>
+                        </div>
                     </div>
                 </div>
-                <div className='md:col-span-2 grid-rows-1 gap-4'>
-                    <div className="max-h-8">
-                        <ProductCategories />
-                    </div>
-                    <div className="overflow-auto pt-8">
+                <div className='flex-1'>
+                    <ProductCategories />
+                    <div className="pt-8">
                         <Lists />
-                    </div>
-                    <div className="flex flex-row gap-4 pt-8">
-                        <div>
-                            <Button>1</Button>
-                        </div>
-                        <div>
-                            <Button>2</Button>
-                        </div>
-                        <div>
-                            <Button>3</Button>
-                        </div>
-                        <div>
-                            <Button>4</Button>
-                        </div>
-                        <div>
-                            <Button>5</Button>
-                        </div>
                     </div>
                 </div>
             </div>
