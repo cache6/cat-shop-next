@@ -34,7 +34,7 @@ export default function ShopPage() {
                         <Button className='w-full' onClick={clearFilters}>Clear filters</Button>
                     </div>
                 </div>
-                <div className="md:col-span-2 grid grid-rows-1 gap-4 items-start">
+                <div className='md:col-span-2 grid-rows-1 gap-4'>
                     <div className="max-h-8">
                         <ProductCategories />
                     </div>
