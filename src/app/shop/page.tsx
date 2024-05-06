@@ -1,6 +1,6 @@
 "use client"
 import { useSearchParams } from 'next/navigation';
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { Button } from "@/components/atoms/button"
 import Lists from "@/components/todo/lists"
 import ProductCategories from "@/components/todo/productCategories"
@@ -16,15 +16,22 @@ export default function ShopPage() {
     const searchParam = useSearchParams();
     const keyword = searchParam.get("keyword")!;
 
+    const [resetKey, setResetKey] = useState(0);
+
+    const clearFilters = useCallback(() => {
+        setResetKey(prevKey => prevKey + 1);  // 키를 변경하여 체크박스 초기화 트리거
+    }, []);
+
     return (
         <>
             <Header onInputValueChange={handleInputValue} />
             {keyword ? <div className='text-2xl font-bold pb-4 px-8'>Results for &quot;{keyword}&quot;</div> : <div className='py-6'></div>}
+
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 px-8">
                 <div className="md:col-span-1 max-w-sm">
-                    <FilterOptionList />
-                    <div className="flex justify-center">
-                        <Button>Clear filters</Button>
+                    <FilterOptionList resetKey={resetKey} />
+                    <div className="flex justify-center py-4">
+                        <Button className='w-full' onClick={clearFilters}>Clear filters</Button>
                     </div>
                 </div>
                 <div className="md:col-span-2 grid grid-rows-1 gap-4 items-start">
