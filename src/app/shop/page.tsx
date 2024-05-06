@@ -30,7 +30,7 @@ export default function ShopPage() {
     }, []);
 
     return (
-        <Suspense fallback={<div>Loading...</div>}>
+        <>
             <Header onInputValueChange={handleInputValue} />
             <Suspense fallback={<div>Loading search parameters...</div>}>
                 <KeywordDisplay />
@@ -52,6 +52,6 @@ export default function ShopPage() {
                     </div>
                 </div>
             </div>
-        </Suspense>
+        </>
     );
 }
