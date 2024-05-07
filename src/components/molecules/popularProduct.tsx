@@ -3,18 +3,18 @@ import Link from 'next/link';
 import { Product } from '@/entities/product';
 
 interface ProductProps {
-    popularProducts: Product[];
+    popularProduct: Product[];
 }
 
-const PopularProducts: React.FC<ProductProps> = ({ popularProducts }) => {
+const PopularProduct: React.FC<ProductProps> = ({ popularProduct }) => {
     return (
         <div className='flex gap-4'>
-            {popularProducts.map((popularProduct, index) => (
+            {popularProduct.map((popularProduct, index) => (
                 <div key={index} className='flex flex-col items-center border border-gray-300 rounded-md p-4 shadow'>
                     <Link href="/">
-                        <img src={popularProduct.productImageUrl} alt={popularProduct.name} />
+                        <img src={popularProduct.productImageUrl} alt={popularProduct.title} />
                     </Link>
-                    <div className='text-center'>{popularProduct.name}</div>
+                    <div className='text-center'>{popularProduct.title}</div>
                     <div className='text-center'>${popularProduct.price.toLocaleString()}</div>
                 </div>
             ))}
@@ -22,4 +22,5 @@ const PopularProducts: React.FC<ProductProps> = ({ popularProducts }) => {
     );
 };
 
-export default PopularProducts;
+export default PopularProduct;
+

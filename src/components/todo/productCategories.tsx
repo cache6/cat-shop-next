@@ -1,5 +1,5 @@
 import React from 'react';
-import Sort from '@/components/todo/sort';
+import Sort from '@/components/atoms/sort';
 import Dropdown from '@/components/todo/dropdown';
 
 const ProductCategories = () => {

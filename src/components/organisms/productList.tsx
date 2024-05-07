@@ -1,17 +1,20 @@
 import React, { useState } from 'react';
-import List from '@/components/todo/list';
+import Product from '@/components/atoms/product';
 import { Button } from '@/components/atoms/button';
 
-const Lists = () => {
+const ProductList = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 8;
 
     // 더미 데이터 생성
     const dummyData = Array.from({ length: 10 }, (_, index) => ({
-        image: `/images/cat_3.png`,
+        productImageUrl: `/images/cat_3.png`, // 이미지 URL 수정
+        name: `제품명${index + 1}`,
         title: `제목${index + 1}`,
-        detail: `글${index + 1}`,
-        tag: `태그${index + 1}`
+        detail: `상세 설명${index + 1}`,
+        tag: `태그${index + 1}`,
+        price: 1000 * (index + 1),
+        // isRecommended: index % 2 === 0
     }));
 
     const indexOfLastItem = currentPage * itemsPerPage;
@@ -30,12 +33,12 @@ const Lists = () => {
             <div className='flex flex-row flex-wrap gap-8 min-h-[640px]'> {/* Adjust minHeight based on your item height */}
                 {currentItems.map((item, index) => (
                     <div key={index} className='flex flex-col w-1/5'>
-                        <List image={item.image} title={item.title} detail={item.detail} tag={item.tag} />
+                        <Product product={item} />
                     </div>
                 ))}
                 {Array.from({ length: 8 - currentItems.length }, (_, i) => (
                     <div key={i} className='flex flex-col w-1/5 invisible'>
-                        <List image="" title="" detail="" tag="" />
+                        <Product product={dummyData[0]} />
                     </div>
                 ))}
             </div>
@@ -46,4 +49,5 @@ const Lists = () => {
     );
 }
 
-export default Lists;
+export default ProductList;
+

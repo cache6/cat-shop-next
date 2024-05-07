@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import Category from '../todo/category';
+import Category from '@/components/atoms/category';
 
 const Categories = () => {
-    const [categories, setCategories] = useState<{ src: string; name: string; }[]>([]);
+    const [categories, setCategories] = useState<{ id: number, categoryImageUrl: string, title: string }[]>([]);
 
     useEffect(() => {
         const dummyData = [
-            { src: "/images/cat_category.png", name: "Category 1" },
-            { src: "/images/cat_category.png", name: "Category 2" },
-            { src: "/images/cat_category.png", name: "Category 3" },
+            { id: 1, categoryImageUrl: "/images/cat_category.png", title: "Category 1" },
+            { id: 2, categoryImageUrl: "/images/cat_category.png", title: "Category 2" },
+            { id: 3, categoryImageUrl: "/images/cat_category.png", title: "Category 3" },
         ];
         setCategories(dummyData);
     }, []);
@@ -17,7 +17,7 @@ const Categories = () => {
         <div className="flex p-8 gap-4">
             {categories.map((category, index) => (
                 <div key={index}>
-                    <Category src={category.src} name={category.name} />
+                    <Category category={category} />
                 </div>
             ))}
         </div>

@@ -3,6 +3,6 @@ export interface Product {
     title?: string;
     detail?: string;
     tag?: string;
-    name: string;
     price: number;
+    isRecommended?: boolean;
 }
