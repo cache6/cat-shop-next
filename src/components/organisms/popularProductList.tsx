@@ -14,10 +14,10 @@ const PopularProductList = () => {
 
             // 시뮬레이션된 데이터
             const data = [
-                { productImageUrl: "/images/cat_popular.png", name: "인기 고양이1", price: 15000 },
-                { productImageUrl: "/images/cat_popular.png", name: "인기 고양이2", price: 20000 },
-                { productImageUrl: "/images/cat_popular.png", name: "인기 고양이3", price: 25000 },
-                { productImageUrl: "/images/cat_popular.png", name: "인기 고양이4", price: 30000 },
+                { productImageUrl: "/images/cat_popular.png", title: "인기 고양이1", price: 15000, isRecommended: true },
+                { productImageUrl: "/images/cat_popular.png", title: "인기 고양이2", price: 20000, isRecommended: true },
+                { productImageUrl: "/images/cat_popular.png", title: "인기 고양이3", price: 25000, isRecommended: true },
+                { productImageUrl: "/images/cat_popular.png", title: "인기 고양이4", price: 30000, isRecommended: true },
             ];
 
             setPopularProducts(data);
@@ -26,11 +26,13 @@ const PopularProductList = () => {
         fetchProducts();
     }, []);
 
+    const filteredProducts = popularProducts.filter(product => product.isRecommended);
+
     return (
         <>
             <div className='flex px-8 font-bold'>추천 상품</div>
             <div className='flex flex-col items-center px-8 py-4'>
-                <PopularProduct popularProducts={popularProducts} />
+                <PopularProduct popularProduct={filteredProducts} />
             </div>
         </>
     );

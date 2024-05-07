@@ -2,7 +2,7 @@
 import React, { useState, useCallback, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { Button } from "@/components/atoms/button"
-import Lists from "@/components/todo/lists"
+import ProductList from "@/components/organisms/productList"
 import ProductCategories from "@/components/todo/productCategories"
 import Header from "@/components/organisms/header"
 import FilterOptionList from "@/components/organisms/filterOptionList"
@@ -30,7 +30,7 @@ export default function ShopPage() {
     }, []);
 
     return (
-        <Suspense fallback={<div>Loading...</div>}>
+        <>
             <Header onInputValueChange={handleInputValue} />
             <Suspense fallback={<div>Loading search parameters...</div>}>
                 <KeywordDisplay />
@@ -48,10 +48,10 @@ export default function ShopPage() {
                 <div className='flex-1'>
                     <ProductCategories />
                     <div className="pt-8">
-                        <Lists />
+                        <ProductList />
                     </div>
                 </div>
             </div>
-        </Suspense>
+        </>
     );
 }
