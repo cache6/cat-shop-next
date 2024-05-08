@@ -25,7 +25,6 @@ const Product: React.FC<ProductProps> = ({ product }) => {
                 </div>
             </div>
         </>
-
     )
 }
 
