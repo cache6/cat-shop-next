@@ -1,30 +1,37 @@
 import React, { useState, useEffect } from 'react';
 
-interface FilterProps {
+export interface FilterOptionsProps {
     title: string;
-    options: { id: string; label: string; }[];
-    resetKey: number;  // 추가: 부모 컴포넌트에서 변경 가능한 키
+    options: { name: string, checked: boolean }[];
 }
 
-const Filter: React.FC<FilterProps> = ({ title, options, resetKey }) => {
+const FilterOptions: React.FC<FilterOptionsProps & { onOptionChange: (title: string, options: { name: string, checked: boolean }[]) => void }> = ({ title, options, onOptionChange }) => {
     const [expanded, setExpanded] = useState(true);
-    const [checkedState, setCheckedState] = useState(new Array(options.length).fill(false));
+    const [checkedState, setCheckedState] = useState(options.map(option => option.checked));
+
+    useEffect(() => {
+        // options prop의 변경을 감지하여 checkedState를 업데이트
+        setCheckedState(options.map(option => option.checked));
+    }, [options]);
 
     const toggleExpand = () => {
         setExpanded(!expanded);
     };
 
-    const handleCheckboxChange = (position: number) => {
-        const updatedCheckedState = checkedState.map((item, index) =>
-            index === position ? !item : item
+    const handleCheckboxChange = (index: number) => {
+        const updatedCheckedState = checkedState.map((item, idx) =>
+            idx === index ? !item : item
         );
         setCheckedState(updatedCheckedState);
+
+        // 옵션 배열 전체를 업데이트하여 상위 컴포넌트로 전달
+        const updatedOptions = options.map((option, idx) => ({
+            ...option,
+            checked: updatedCheckedState[idx]
+        }));
+        onOptionChange(title, updatedOptions);
     };
 
-    // 리셋 키가 변경될 때마다 체크박스 상태를 초기화
-    useEffect(() => {
-        setCheckedState(new Array(options.length).fill(false));
-    }, [resetKey, options.length]);
 
     return (
         <>
@@ -38,16 +45,16 @@ const Filter: React.FC<FilterProps> = ({ title, options, resetKey }) => {
                 {expanded && (
                     <div className='flex flex-col gap-2'>
                         {options.map((option, index) => (
-                            <div key={option.id} className='flex flex-row gap-2'>
+                            <div key={option.name} className='flex flex-row gap-2'>
                                 <div>
                                     <input
                                         type="checkbox"
-                                        id={option.id}
+                                        id={option.name}
                                         checked={checkedState[index]}
                                         onChange={() => handleCheckboxChange(index)}
                                     />
                                 </div>
-                                <div>{option.label}</div>
+                                <div>{option.name}</div>
                             </div>
                         ))}
                     </div>
@@ -57,4 +64,5 @@ const Filter: React.FC<FilterProps> = ({ title, options, resetKey }) => {
     );
 };
 
-export default Filter;
+export default FilterOptions;
+

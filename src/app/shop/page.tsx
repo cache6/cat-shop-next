@@ -6,32 +6,33 @@ import ProductList from "@/components/organisms/productList"
 import ProductCategories from "@/components/todo/productCategories"
 import Header from "@/components/organisms/header"
 import FilterOptionList from "@/components/organisms/filterOptionList"
+import SearchPage from "@/components/templates/searchPage"
 
-function KeywordDisplay() {
-    const searchParams = useSearchParams();
-    const keyword = searchParams.get("keyword")!;
-    return (
-        <div>
-            {keyword ? <div className='text-2xl font-bold pb-4 px-8'>Results for &quot;{keyword}&quot;</div> : <div className='py-6'></div>}
-        </div>
-    );
-}
+// function KeywordDisplay() {
+//     const searchParams = useSearchParams();
+//     const keyword = searchParams.get("keyword")!;
+//     return (
+//         <div>
+//             {keyword ? <div className='text-2xl font-bold pb-4 px-8'>Results for &quot;{keyword}&quot;</div> : <div className='py-6'></div>}
+//         </div>
+//     );
+// }
 
 export default function ShopPage() {
-    const [, setInputValue] = useState('');
+    // const [, setInputValue] = useState('');
 
-    const handleInputValue = (value: string) => {
-        setInputValue(value);
-    }
+    // const handleInputValue = (value: string) => {
+    //     setInputValue(value);
+    // }
 
-    const [resetKey, setResetKey] = useState(0);
-    const clearFilters = useCallback(() => {
-        setResetKey(prevKey => prevKey + 1);
-    }, []);
+    // const [resetKey, setResetKey] = useState(0);
+    // const clearFilters = useCallback(() => {
+    //     setResetKey(prevKey => prevKey + 1);
+    // }, []);
 
     return (
         <>
-            <Header onInputValueChange={handleInputValue} />
+            {/* <Header onInputValueChange={handleInputValue} />
             <Suspense fallback={<div>Loading search parameters...</div>}>
                 <KeywordDisplay />
             </Suspense>
@@ -51,7 +52,8 @@ export default function ShopPage() {
                         <ProductList />
                     </div>
                 </div>
-            </div>
+            </div> */}
+            <SearchPage />
         </>
     );
 }

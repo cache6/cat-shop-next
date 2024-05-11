@@ -1,23 +1,21 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-const Sort = () => {
-    const [sortMethod, setSortMethod] = useState('products');
+interface SortProps {
+    selectedValue: string;  // 'selectedValue'의 타입을 string으로 명시
+    onValueChange: (newValue: string) => void;  // 'onValueChange' 함수의 매개변수 타입 명시
+}
 
-    const toggleSortMethod = () => {
-        setSortMethod(prevMethod => prevMethod === 'products' ? 'list' : 'products');
-    };
-
+const Sort: React.FC<SortProps> = ({ selectedValue, onValueChange }) => {
     return (
-        <>
-            <div className="flex gap-3 h-5 w-5 items-center" onClick={toggleSortMethod}>
-                {sortMethod === 'products' ? (
-                    <img src="/images/products_sort.png" className='h-4' alt="sort products" />
-                ) : (
-                    <img src="/images/list_sort.png" className='h-4' alt="sort list" />
-                )}
-            </div>
-        </>
+        <select value={selectedValue} onChange={(e) => onValueChange(e.target.value)}>
+            <option value="">Sort by</option>
+            <option value="recommended">Recommended</option>
+            <option value="mostPopular">Most Popular</option>
+            <option value="highestRated">Highest Rated</option>
+            <option value="newest">Newest</option>
+        </select>
     );
-};
+}
 
 export default Sort;
+

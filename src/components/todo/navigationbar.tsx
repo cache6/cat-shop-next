@@ -6,8 +6,8 @@ const NavigationBar = () => {
         <>
             <MenuLink href="/">Home</MenuLink>
             <MenuLink href="/shop">Shop</MenuLink>
-            <MenuLink href="/categories">Categories</MenuLink>
-            <MenuLink href="/about">About</MenuLink>
+            {/* <MenuLink href="/categories">Categories</MenuLink>
+            <MenuLink href="/about">About</MenuLink> */}
         </>
     );
 };

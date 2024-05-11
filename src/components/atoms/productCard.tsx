@@ -6,7 +6,7 @@ interface ProductProps {
     product: Product;
 }
 
-const Product: React.FC<ProductProps> = ({ product }) => {
+const ProductCard: React.FC<ProductProps> = ({ product }) => {
     return (
         <>
             <div>
@@ -29,5 +29,5 @@ const Product: React.FC<ProductProps> = ({ product }) => {
     )
 }
 
-export default Product
+export default ProductCard
 
