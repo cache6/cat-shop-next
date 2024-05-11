@@ -58,7 +58,7 @@ export default function CartPage() {
                     </div>
                 </div>
                 <div className="flex flex-row px-8">
-                    <div>total : ${111 * quantity}</div>
+                    <div>totalPrice : ${111 * quantity}</div>
                 </div>
                 <div className="flex flex-row px-8 py-8">
                     <Button>
