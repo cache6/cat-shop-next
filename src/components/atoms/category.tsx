@@ -10,9 +10,9 @@ const Category: React.FC<CategoryProps> = ({ category }) => {
     return (
         <>
             <div className='flex flex-col items-center border border-gray-300 rounded-md p-4 shadow'>
-                <Link href="/" className='text-center' >{category.title}</Link>
+                <Link href="/" className='text-center' >{category.name}</Link>
                 <Link href="/">
-                    <img className='w-full h-auto' id={category.id.toString()} src={category.categoryImageUrl} alt={category.title} />
+                    <img className='w-full h-auto' id={category.id.toString()} src={category.categoryImageUrl} alt={category.name} />
                 </Link>
             </div>
         </>

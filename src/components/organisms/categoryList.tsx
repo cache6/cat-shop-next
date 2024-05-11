@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react';
 import Category from '@/components/atoms/category';
 
 const Categories = () => {
-    const [categories, setCategories] = useState<{ id: number, categoryImageUrl: string, title: string }[]>([]);
+    const [categories, setCategories] = useState<{ id: number, categoryImageUrl: string, name: string }[]>([]);
 
     useEffect(() => {
         const dummyData = [
-            { id: 1, categoryImageUrl: "/images/cat_category.png", title: "Category 1" },
-            { id: 2, categoryImageUrl: "/images/cat_category.png", title: "Category 2" },
-            { id: 3, categoryImageUrl: "/images/cat_category.png", title: "Category 3" },
+            { id: 1, categoryImageUrl: "/images/cat_category.png", name: "Category 1" },
+            { id: 2, categoryImageUrl: "/images/cat_category.png", name: "Category 2" },
+            { id: 3, categoryImageUrl: "/images/cat_category.png", name: "Category 3" },
         ];
         setCategories(dummyData);
     }, []);

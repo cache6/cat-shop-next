@@ -12,7 +12,7 @@ const Product: React.FC<ProductProps> = ({ product }) => {
             <div>
                 <img src={product.productImageUrl} />
                 <div className='text-lg font-bold'>{product.title}</div>
-                <div>{product.detail}</div>
+                <div>{product.externalNote}</div>
                 <div className="flex flex-row gap-4">
                     <div className="justify-start flex-1">
                         {product.tag}

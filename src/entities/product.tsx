@@ -1,8 +1,13 @@
+import { Category } from "./category";
+
 export interface Product {
+    id: number;
     productImageUrl: string;
-    title?: string;
-    detail?: string;
+    title: string;
+    externalNote?: string;
     tag?: string;
     price: number;
-    isRecommended?: boolean;
+    isRecommended: boolean;
+    category: Category;
 }
+
