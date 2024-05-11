@@ -13,7 +13,7 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({ onInputValueChange }) => {
     const notify = () => {
         toast("구현 예정입니다.", {
-            position: "bottom-right",
+            position: "top-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
