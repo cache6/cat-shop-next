@@ -20,7 +20,7 @@ function KeywordDisplay() {
     );
 }
 
-const searchPage = () => {
+const SearchPage = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [category, setCategory] = useState<Category | null>(null);
     const [products, setProducts] = useState<Product[]>([]);
@@ -122,4 +122,4 @@ const searchPage = () => {
     );
 };
 
-export default searchPage;
+export default SearchPage;
