@@ -8,13 +8,15 @@ const ProductList = () => {
 
     // 더미 데이터 생성
     const dummyData = Array.from({ length: 10 }, (_, index) => ({
+        id: index + 1,
         productImageUrl: `/images/cat_3.png`, // 이미지 URL 수정
         name: `제품명${index + 1}`,
         title: `제목${index + 1}`,
         detail: `상세 설명${index + 1}`,
         tag: `태그${index + 1}`,
         price: 1000 * (index + 1),
-        // isRecommended: index % 2 === 0
+        isRecommended: index % 2 === 0,
+        category: { id: 1, name: "Category 1", categoryImageUrl: "/images/cat_category.png" }
     }));
 
     const indexOfLastItem = currentPage * itemsPerPage;

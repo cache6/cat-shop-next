@@ -14,10 +14,10 @@ const PopularProductList = () => {
 
             // 시뮬레이션된 데이터
             const data = [
-                { productImageUrl: "/images/cat_popular.png", title: "인기 고양이1", price: 15000, isRecommended: true },
-                { productImageUrl: "/images/cat_popular.png", title: "인기 고양이2", price: 20000, isRecommended: true },
-                { productImageUrl: "/images/cat_popular.png", title: "인기 고양이3", price: 25000, isRecommended: true },
-                { productImageUrl: "/images/cat_popular.png", title: "인기 고양이4", price: 30000, isRecommended: true },
+                { id: 1, category: { id: 1, name: "Category 1", categoryImageUrl: "/images/cat_category.png" }, productImageUrl: "/images/cat_popular.png", title: "인기 고양이1", price: 15000, isRecommended: true },
+                { id: 2, category: { id: 1, name: "Category 1", categoryImageUrl: "/images/cat_category.png" }, productImageUrl: "/images/cat_popular.png", title: "인기 고양이2", price: 20000, isRecommended: true },
+                { id: 3, category: { id: 1, name: "Category 1", categoryImageUrl: "/images/cat_category.png" }, productImageUrl: "/images/cat_popular.png", title: "인기 고양이3", price: 25000, isRecommended: true },
+                { id: 4, category: { id: 1, name: "Category 1", categoryImageUrl: "/images/cat_category.png" }, productImageUrl: "/images/cat_popular.png", title: "인기 고양이4", price: 30000, isRecommended: true },
             ];
 
             setPopularProducts(data);
