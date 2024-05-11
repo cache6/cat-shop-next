@@ -8,11 +8,11 @@ interface SortProps {
 const Sort: React.FC<SortProps> = ({ selectedValue, onValueChange }) => {
     return (
         <select value={selectedValue} onChange={(e) => onValueChange(e.target.value)}>
-            <option value="">Sort by</option>
-            <option value="recommended">Recommended</option>
-            <option value="mostPopular">Most Popular</option>
-            <option value="highestRated">Highest Rated</option>
-            <option value="newest">Newest</option>
+            <option value="">정렬 순</option>
+            <option value="recommended">추천</option>
+            <option value="mostPopular">인기</option>
+            <option value="highestRated">평점</option>
+            <option value="newest">최신</option>
         </select>
     );
 }

@@ -19,9 +19,9 @@ const FilterOptionList: React.FC<FilterOptionListProps> = ({ onFilterChange, sel
         const fetchFilters = async () => {
             // 실제 API 호출로 대체 예정
             const fetchedFilters: FilterOptionsProps[] = [
-                { title: "Your Title1", options: [{ name: "Option1", checked: false }, { name: "Option2", checked: false }] },
-                { title: "Your Title2", options: [{ name: "Option1", checked: false }, { name: "Option2", checked: false }] },
-                { title: "Your Title3", options: [{ name: "Option1", checked: false }, { name: "Option2", checked: false }] }
+                { title: "필터조건1", options: [{ name: "필터옵션1", checked: false }, { name: "필터옵션2", checked: false }] },
+                { title: "필터조건2", options: [{ name: "필터옵션1", checked: false }, { name: "필터옵션2", checked: false }] },
+                { title: "필터조건3", options: [{ name: "필터옵션1", checked: false }, { name: "필터옵션2", checked: false }] }
             ];
 
             // 사용자 선택을 유지하면서 필터 옵션을 업데이트

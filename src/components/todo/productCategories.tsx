@@ -7,10 +7,10 @@ interface ProductCategoriesProps {
 }
 
 const categories: Category[] = [
-    { id: 1, name: "Favorites", categoryImageUrl: "/path/to/image" },
-    { id: 2, name: "Top picks", categoryImageUrl: "/path/to/image" },
-    { id: 3, name: "New arrivals", categoryImageUrl: "/path/to/image" },
-    { id: 4, name: "Best sellers", categoryImageUrl: "/path/to/image" }
+    { id: 1, name: "추천", categoryImageUrl: "/path/to/image" },
+    { id: 2, name: "세일", categoryImageUrl: "/path/to/image" },
+    { id: 3, name: "신상", categoryImageUrl: "/path/to/image" },
+    { id: 4, name: "베스트", categoryImageUrl: "/path/to/image" }
 ];
 
 
@@ -22,17 +22,12 @@ const ProductCategories: React.FC<ProductCategoriesProps> = ({ category, onCateg
 
     return (
         <>
-            <div className='flex'>
-                <button onClick={() => handleCategoryChange('Favorites')}><p>★</p></button>
-            </div>
-            <div className='flex'>
-                <button onClick={() => handleCategoryChange('Top picks')}><p>Top picks</p></button>
-            </div>
-            <div className='flex'>
-                <button onClick={() => handleCategoryChange('New arrivals')}><p>New arrivals</p></button>
-            </div>
-            <div className='flex'>
-                <button onClick={() => handleCategoryChange('Best sellers')}><p>Best sellers</p></button>
+            <div className='flex border-l border-gray-300'>
+                {categories.map(category => (
+                    <div className='flex px-8 border-r border-gray-300' key={category.id}>
+                        <button onClick={() => handleCategoryChange(category.name)}><p>{category.name}</p></button>
+                    </div>
+                ))}
             </div>
         </>
     );
