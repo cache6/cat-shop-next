@@ -28,7 +28,7 @@ export default function PaymentPage() {
     useEffect(() => {
         const fetchCarts = async () => {
             const fetchCarts: Cart[] = [
-                { id: 1, userId: 1, productId: 1, quantity: 1, product: { id: 1, title: "제품 1", externalNote: '상세 설명1', tag: '태그1', price: 100, productImageUrl: '/images/cat_3.png', isRecommended: true, category: { id: 1, name: "Category 1", categoryImageUrl: "/images/cat_category.png" } } },
+                { id: 1, userId: 1, quantity: 1, product: { id: 1, title: "제품 1", externalNote: '상세 설명1', tag: '태그1', price: 100, productImageUrl: '/images/cat_3.png', isRecommended: true, category: { id: 1, name: "Category 1", categoryImageUrl: "/images/cat_category.png" } } },
             ]
             setCarts(fetchCarts);
         }
@@ -41,7 +41,7 @@ export default function PaymentPage() {
             <div className="flex flex-row gap-4 px-8">
                 <div className="flex flex-1 flex-col gap-4 justify-start pl-16">
                     <div className="text-sm text-gray-400">- 돌아가기</div>
-                    <div className="text-2xl font-bold">결제 진행</div>
+                    <div className="text-2xl font-bold">결제 내용</div>
                     <div className="text-1xl font-bold border-t border-gray-300 py-4">배송 주소</div>
                     <div className="flex flex-row gap-4">
                         <AddressForm label="이름" placeholder="길동" />

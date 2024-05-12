@@ -1,9 +1,8 @@
-import { Product } from "./product";
+import { Product } from "@/entities/product";
 
 export interface Cart {
     id: number;
     userId: number;
-    productId: number;
     quantity: number;
     product: Product;
 }

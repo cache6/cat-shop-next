@@ -31,7 +31,7 @@ const CheckoutSummary: React.FC<CheckoutSummaryProps> = ({ carts, totalPrice, sh
                         </div>
                     </div>
                     <div className="flex py-8">
-                        <Button className="w-full" onClick={onCheckout}>결제 진행</Button>
+                        <Button className="w-full" onClick={onCheckout}>결제하기</Button>
                     </div>
                 </div>
             </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import Logo from '@/components/atoms/logo';
-import NavigationBar from '@/components/todo/navigationbar';
-import Search from '@/components/molecules/search';
+import NavigationBar from '@/components/molecules/navigationbar';
+import SearchBox from '@/components/molecules/searchBox';
 import Link from 'next/link';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -34,7 +34,7 @@ const Header: React.FC<HeaderProps> = ({ onInputValueChange }) => {
                         <NavigationBar />
                     </div>
                     <div className='flex flex-1 justify-end place-items-center gap-1'>
-                        <Search onInputValueChange={onInputValueChange} />
+                        <SearchBox onInputValueChange={onInputValueChange} />
                         <button onClick={notify}>
                             <img src="/images/login.png" alt="login" className='w-8 h-8' />
                         </button>

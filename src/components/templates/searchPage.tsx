@@ -2,7 +2,7 @@ import React, { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Header from '@/components/organisms/header';
 import FilterOptionList from '@/components/organisms/filterOptionList';
-import ProductCategories from '@/components/todo/productCategories';
+import ProductCategories from '@/components/molecules/productCategories';
 import ProductList from '@/components/organisms/productList';
 import { Button } from '@/components/atoms/button';
 import { Category } from '@/entities/category';
