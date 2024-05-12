@@ -8,8 +8,10 @@ const CartItem = ({ cartId, productId, initialQuantity, displayToast, updateCart
 
     const increaseQuantity = async () => {
         const newQuantity = quantity + 1;
+        console.log(`Attempting to update quantity for cartId: ${cartId}, productId: ${productId}, newQuantity: ${newQuantity}`);
+
         try {
-            await updateCartQuantity(cartId, productId, newQuantity); // 인자를 전달하여 함수 호출
+            await updateCartQuantity(cartId, productId, newQuantity);
             setQuantity(newQuantity);
             updateCartQuantityInState(cartId, newQuantity);
         } catch (error) {

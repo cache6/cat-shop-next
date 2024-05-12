@@ -6,9 +6,7 @@ import CheckoutSummary from "@/components/molecules/checkoutSummary";
 import { Cart } from "@/entities/cart";
 import { User } from "@/entities/user";
 import { useUserQuery } from "@/api/user";
-import { useCartsQuery } from "@/api/cart";
-import { useCartsShipingPriceQuery } from "@/api/cart";
-
+import { useCartsQuery, useCartsShipingPriceQuery } from "@/api/cart";
 
 export default function PaymentPage() {
     const [, setInputValue] = useState('');
@@ -45,7 +43,7 @@ export default function PaymentPage() {
         };
 
         fetchData();
-    }, [fetchedUser, fetchedCarts, shippingPrice]);
+    }, []);
 
     return (
         <>

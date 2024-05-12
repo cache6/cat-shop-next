@@ -20,7 +20,7 @@ export default function CartPage() {
             setCarts(await fetchedCarts);
         };
         loadCarts();
-    }, [fetchedCarts]); // fetchedCarts를 의존성 배열에 추가
+    }, []); // fetchedCarts를 의존성 배열에 추가
 
     const displayToast = (message: string) => {
         setToastMessage(message);
