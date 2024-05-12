@@ -7,34 +7,28 @@ export default function LoginPage() {
     const [mapLoaded, setMapLoaded] = useState(false);
 
     useEffect(() => {
-        if (mapLoaded && window.kakao && window.kakao.maps) {
-            const container = document.getElementById('map');
-            if (!container) {
-                console.error('Map container not found');
-                return;
-            }
-            const options = {
-                center: new window.kakao.maps.LatLng(37.5665, 126.9780),
-                level: 3
-            };
-            const map = new window.kakao.maps.Map(container, options);
-            console.log('Map object:', map);
+        const kakaoMapScript = document.createElement('script')
+        kakaoMapScript.async = false
+        kakaoMapScript.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.KAKAO_APP_KEY}&autoload=false`
+        document.head.appendChild(kakaoMapScript)
+
+        const onLoadKakaoAPI = () => {
+            window.kakao.maps.load(() => {
+                var container = document.getElementById('map')
+                var options = {
+                    center: new window.kakao.maps.LatLng(37.5665, 126.9780),
+                    level: 3,
+                }
+
+                var map = new window.kakao.maps.Map(container, options)
+            })
         }
-    }, [mapLoaded]);
+
+        kakaoMapScript.addEventListener('load', onLoadKakaoAPI)
+    }, [])
 
     return (
         <>
-            <Script
-                src={`//dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=${process.env.KAKAO_APP_KEY}`}
-                strategy="afterInteractive"
-                onLoad={() => {
-                    console.log('Kakao Map SDK is loaded');
-                    window.kakao.maps.load(() => {
-                        setMapLoaded(true);
-                    });
-                }}
-                onError={(e) => console.error('Error loading Kakao Map SDK', e)}
-            />
             <div className='flex flex-col items-center justify-center h-screen gap-8'>
                 <div className=''>
                     <LoginButton />
