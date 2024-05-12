@@ -1,18 +1,19 @@
 import React, { useState } from 'react';
 import { Button } from "@/components/atoms/button";
-import { updateCartQuantity } from "@/api/cartApi";
+import { useUpdateCartQuantityMutation } from "@/api/cart";
 
 const CartItem = ({ cartId, productId, initialQuantity, displayToast, updateCartQuantityInState }: { cartId: number, productId: number, initialQuantity: number, displayToast: (message: string) => void, updateCartQuantityInState: (cartId: number, newQuantity: number) => void }) => {
     const [quantity, setQuantity] = useState(initialQuantity);
+    const updateCartQuantity = useUpdateCartQuantityMutation(); // 훅을 최상위에서 호출
 
     const increaseQuantity = async () => {
         const newQuantity = quantity + 1;
         try {
-            await updateCartQuantity(cartId, productId, newQuantity);
+            await updateCartQuantity(cartId, productId, newQuantity); // 인자를 전달하여 함수 호출
             setQuantity(newQuantity);
-            updateCartQuantityInState(cartId, newQuantity);  // 상태 직접 갱신
+            updateCartQuantityInState(cartId, newQuantity);
         } catch (error) {
-            console.error("Failed to update quantity", error);
+            console.error("수량 업데이트 실패", error);
             displayToast("수량 업데이트 중 오류가 발생했습니다.");
         }
     };
@@ -21,11 +22,11 @@ const CartItem = ({ cartId, productId, initialQuantity, displayToast, updateCart
         if (quantity > 1) {
             const newQuantity = quantity - 1;
             try {
-                await updateCartQuantity(cartId, productId, newQuantity);
+                await updateCartQuantity(cartId, productId, newQuantity); // 인자를 전달하여 함수 호출
                 setQuantity(newQuantity);
-                updateCartQuantityInState(cartId, newQuantity);  // 상태 직접 갱신
+                updateCartQuantityInState(cartId, newQuantity);
             } catch (error) {
-                console.error("Failed to decrease quantity", error);
+                console.error("수량 감소 실패", error);
                 displayToast("수량 감소 중 오류가 발생했습니다.");
             }
         } else {

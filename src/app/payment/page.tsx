@@ -1,17 +1,27 @@
 "use client"
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "@/components/organisms/header";
 import AddressForm from "@/components/molecules/addressForm";
 import CheckoutSummary from "@/components/molecules/checkoutSummary";
 import { Cart } from "@/entities/cart";
+import { User } from "@/entities/user";
+import { useUserQuery } from "@/api/user";
+import { useCartsQuery } from "@/api/cart";
+import { useCartsShipingPriceQuery } from "@/api/cart";
+
 
 export default function PaymentPage() {
     const [, setInputValue] = useState('');
-    const [totalPrice, setTotalPrice] = useState(10000); // 예시: 10000
+    const [user, setUser] = useState<User | null>(null);
     const [carts, setCarts] = useState<Cart[]>([]);
+    const [totalPrice, setTotalPrice] = useState(0);
     const [toastMessage, setToastMessage] = useState('');
-    const shippingCost = 2500; // 배송비는 고정
-    const totalAmountDue = totalPrice + shippingCost; // 총 금액 계산
+    const [shippingCost, setShippingCost] = useState(0);
+    const totalAmountDue = totalPrice + shippingCost;
+
+    const fetchedUser = useUserQuery();
+    const fetchedCarts = useCartsQuery();
+    const shippingPrice = useCartsShipingPriceQuery();
 
     const handleInputValue = (value: string) => {
         setInputValue(value);
@@ -26,14 +36,16 @@ export default function PaymentPage() {
     };
 
     useEffect(() => {
-        const fetchCarts = async () => {
-            const fetchCarts: Cart[] = [
-                { id: 1, userId: 1, quantity: 1, product: { id: 1, title: "제품 1", externalNote: '상세 설명1', tag: '태그1', price: 100, productImageUrl: '/images/cat_3.png', isRecommended: true, category: { id: 1, name: "Category 1", categoryImageUrl: "/images/cat_category.png" } } },
-            ]
-            setCarts(fetchCarts);
-        }
-        fetchCarts();
-    }, []);
+        const fetchData = async () => {
+            setUser(await fetchedUser);
+            const cartsData = await fetchedCarts;
+            setCarts(cartsData);
+            setTotalPrice(cartsData.reduce((sum, cart) => sum + cart.product.price * cart.quantity, 0));
+            setShippingCost(await shippingPrice);
+        };
+
+        fetchData();
+    }, [fetchedUser, fetchedCarts, shippingPrice]);
 
     return (
         <>
@@ -44,17 +56,17 @@ export default function PaymentPage() {
                     <div className="text-2xl font-bold">결제 내용</div>
                     <div className="text-1xl font-bold border-t border-gray-300 py-4">배송 주소</div>
                     <div className="flex flex-row gap-4">
-                        <AddressForm label="이름" placeholder="길동" />
-                        <AddressForm label="성" placeholder="홍" />
+                        <AddressForm value={user?.name} label="이름" placeholder="길동" />
+                        <AddressForm value={user?.address} label="성" placeholder="홍" />
                     </div>
                     <div className="flex flex-row gap-4">
-                        <AddressForm label="전화 번호" placeholder="010-1234-5678" />
-                        <AddressForm label="이메일 주소" placeholder="cat@naver.com" />
+                        <AddressForm value={user?.phone} label="전화 번호" placeholder="010-1234-5678" />
+                        <AddressForm value={user?.email} label="이메일 주소" placeholder="cat@naver.com" />
                     </div>
                     <div className="text-xl font-bold border-t border-gray-300 py-4">
                         배송 주소 입력
                     </div>
-                    <AddressForm label="배송 주소" placeholder="배송 주소 입력" />
+                    <AddressForm value={user?.address} label="배송 주소" placeholder="배송 주소 입력" />
                     <AddressForm label="배송 메모" placeholder="배송 메모 입력" />
                 </div>
                 <CheckoutSummary

@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import Header from "@/components/organisms/header";
 import { Button } from "@/components/atoms/button";
 import Link from "next/link";
-import { fetchCarts } from "@/api/cartApi";
+import { useCartsQuery } from "@/api/cart";
 import CartList from "@/components/templates/cartList";
 import { Cart } from '@/entities/cart';
 
@@ -13,13 +13,14 @@ export default function CartPage() {
     const [toastMessage, setToastMessage] = useState('');
     const [showToast, setShowToast] = useState(false);
 
+    const fetchedCarts = useCartsQuery(); // 훅을 최상위에서 호출
+
     useEffect(() => {
         const loadCarts = async () => {
-            const fetchedCarts: Cart[] = await fetchCarts();
-            setCarts(fetchedCarts);
+            setCarts(await fetchedCarts);
         };
         loadCarts();
-    }, []);
+    }, [fetchedCarts]); // fetchedCarts를 의존성 배열에 추가
 
     const displayToast = (message: string) => {
         setToastMessage(message);
@@ -57,7 +58,7 @@ export default function CartPage() {
                 </div>
                 <div className="flex flex-row px-8 py-8">
                     <Button>
-                        <Link href="/payment">결제하기</Link>
+                        <Link href="/payment">결제하러가기</Link>
                     </Button>
                 </div>
             </div>
