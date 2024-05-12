@@ -11,7 +11,7 @@ const CartItem = ({ cartId, productId, initialQuantity, displayToast, updateCart
         console.log(`Attempting to update quantity for cartId: ${cartId}, productId: ${productId}, newQuantity: ${newQuantity}`);
 
         try {
-            await updateCartQuantity(cartId, productId, newQuantity);
+            await updateCartQuantity({ cartId, productId, newQuantity });
             setQuantity(newQuantity);
             updateCartQuantityInState(cartId, newQuantity);
         } catch (error) {
@@ -24,7 +24,7 @@ const CartItem = ({ cartId, productId, initialQuantity, displayToast, updateCart
         if (quantity > 1) {
             const newQuantity = quantity - 1;
             try {
-                await updateCartQuantity(cartId, productId, newQuantity); // 인자를 전달하여 함수 호출
+                await updateCartQuantity({ cartId, productId, newQuantity });
                 setQuantity(newQuantity);
                 updateCartQuantityInState(cartId, newQuantity);
             } catch (error) {

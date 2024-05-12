@@ -7,8 +7,14 @@ export const useCartsQuery: () => Promise<Cart[]> = async () => {
     ]);
 };
 
+interface UpdateCartQuantity {
+    cartId: number,
+    productId: number,
+    newQuantity: number
+}
+
 export const useUpdateCartQuantityMutation = () => {
-    return async (cartId: number, productId: number, newQuantity: number): Promise<void> => {
+    return async ({ cartId, productId, newQuantity }: UpdateCartQuantity): Promise<void> => {
         // API 호출 로직 또는 상태 업데이트 로직
         console.log(`Updating cart ${cartId} to new quantity ${newQuantity} for product ${productId}`);
         return Promise.resolve();
