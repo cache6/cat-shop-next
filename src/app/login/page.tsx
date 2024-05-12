@@ -1,6 +1,13 @@
+"use client"
+import React from 'react';
+import LoginButton from '@/components/molecules/loginButton';
+
 export default function LoginPage() {
     return (
-        <div>Login</div>
+        <>
+            <div>
+                <LoginButton />
+            </div>
+        </>
     );
 }
-

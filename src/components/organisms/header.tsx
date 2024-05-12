@@ -3,8 +3,6 @@ import Logo from '@/components/atoms/logo';
 import NavigationBar from '@/components/molecules/navigationbar';
 import SearchBox from '@/components/molecules/searchBox';
 import Link from 'next/link';
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 interface HeaderProps {
     onInputValueChange: (value: string) => void;
@@ -13,10 +11,10 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({ onInputValueChange }) => {
     const [toastMessage, setToastMessage] = useState('');
 
-    const handleCheckout = () => {
-        setToastMessage('구현 예정입니다');
-        setTimeout(() => setToastMessage(''), 3000);
-    }
+    // const handleCheckout = () => {
+    //     setToastMessage('구현 예정입니다');
+    //     setTimeout(() => setToastMessage(''), 3000);
+    // }
 
     return (
         <>
@@ -30,9 +28,9 @@ const Header: React.FC<HeaderProps> = ({ onInputValueChange }) => {
                     </div>
                     <div className='flex flex-1 justify-end place-items-center gap-1'>
                         <SearchBox onInputValueChange={onInputValueChange} />
-                        <button onClick={handleCheckout}>
+                        <Link href='/login'>
                             <img src="/images/login.png" alt="login" className='w-8 h-8' />
-                        </button>
+                        </Link>
                         <Link href='/cart'>
                             <img src="/images/cart.png" alt="cart" className='w-8 h-8' />
                         </Link>

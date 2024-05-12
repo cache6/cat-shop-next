@@ -5,7 +5,6 @@ import AddressForm from "@/components/molecules/addressForm";
 import CheckoutSummary from "@/components/molecules/checkoutSummary";
 import { Cart } from "@/entities/cart";
 import { User } from "@/entities/user";
-import { useUserQuery } from "@/api/user";
 import { useCartsQuery, useCartsShipingPriceQuery } from "@/api/cart";
 
 export default function PaymentPage() {
@@ -17,7 +16,6 @@ export default function PaymentPage() {
     const [shippingCost, setShippingCost] = useState(0);
     const totalAmountDue = totalPrice + shippingCost;
 
-    const fetchedUser = useUserQuery();
     const fetchedCarts = useCartsQuery();
     const shippingPrice = useCartsShipingPriceQuery();
 
@@ -35,7 +33,6 @@ export default function PaymentPage() {
 
     useEffect(() => {
         const fetchData = async () => {
-            setUser(await fetchedUser);
             const cartsData = await fetchedCarts;
             setCarts(cartsData);
             setTotalPrice(cartsData.reduce((sum, cart) => sum + cart.product.price * cart.quantity, 0));
