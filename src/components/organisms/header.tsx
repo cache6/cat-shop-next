@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Logo from '@/components/atoms/logo';
 import NavigationBar from '@/components/molecules/navigationbar';
 import SearchBox from '@/components/molecules/searchBox';
@@ -11,17 +11,12 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ onInputValueChange }) => {
-    const notify = () => {
-        toast("구현 예정입니다.", {
-            position: "top-center",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-        });
-    };
+    const [toastMessage, setToastMessage] = useState('');
+
+    const handleCheckout = () => {
+        setToastMessage('구현 예정입니다');
+        setTimeout(() => setToastMessage(''), 3000);
+    }
 
     return (
         <>
@@ -35,7 +30,7 @@ const Header: React.FC<HeaderProps> = ({ onInputValueChange }) => {
                     </div>
                     <div className='flex flex-1 justify-end place-items-center gap-1'>
                         <SearchBox onInputValueChange={onInputValueChange} />
-                        <button onClick={notify}>
+                        <button onClick={handleCheckout}>
                             <img src="/images/login.png" alt="login" className='w-8 h-8' />
                         </button>
                         <Link href='/cart'>
@@ -44,7 +39,11 @@ const Header: React.FC<HeaderProps> = ({ onInputValueChange }) => {
                     </div>
                 </div>
             </div>
-            <ToastContainer />
+            {toastMessage && (
+                <div className="fixed bottom-10 left-1/2 transform -translate-x-1/2 bg-black text-white px-4 py-2 rounded">
+                    {toastMessage}
+                </div>
+            )}
         </>
     );
 };
