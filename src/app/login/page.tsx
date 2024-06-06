@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import Script from 'next/script';
 import LoginButton from '@/components/molecules/loginButton';
+import { login, signup } from './actions'
 
 export default function LoginPage() {
     const [mapLoaded, setMapLoaded] = useState(false);
@@ -25,6 +26,14 @@ export default function LoginPage() {
 
     return (
         <>
+            <form>
+                <label htmlFor="email">Email:</label>
+                <input id="email" name="email" type="email" required />
+                <label htmlFor="password">Password:</label>
+                <input id="password" name="password" type="password" required />
+                <button formAction={login}>Log in</button>
+                <button formAction={signup}>Sign up</button>
+            </form>
             <Script
                 type='text/javascript'
                 src={`//dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=${process.env.KAKAO_APP_KEY}`}

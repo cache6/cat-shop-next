@@ -29,6 +29,8 @@ const SearchPage = () => {
     const [selectedOptions, setSelectedOptions] = useState<FilterOptionsProps[]>([]);
     const totalPage = 10;
 
+
+
     useEffect(() => {
         const perPage = 8;  // 페이지당 제품 수 설정
         // API 호출 함수
