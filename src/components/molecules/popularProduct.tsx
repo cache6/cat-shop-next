@@ -12,9 +12,9 @@ const PopularProduct: React.FC<ProductProps> = ({ popularProduct }) => {
             {popularProduct.map((popularProduct, index) => (
                 <div key={index} className='flex flex-col items-center border border-gray-300 rounded-md p-4 shadow'>
                     <Link href="/">
-                        <img src={popularProduct.productImageUrl} alt={popularProduct.title} />
+                        <img src={popularProduct.productImageUrl} alt={popularProduct.name} />
                     </Link>
-                    <div className='text-center'>{popularProduct.title}</div>
+                    <div className='text-center'>{popularProduct.name}</div>
                     <div className='text-center'>${popularProduct.price.toLocaleString()}</div>
                 </div>
             ))}

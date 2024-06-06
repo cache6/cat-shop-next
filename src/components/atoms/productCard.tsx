@@ -11,7 +11,7 @@ const ProductCard: React.FC<ProductProps> = ({ product }) => {
         <>
             <div>
                 <img src={product.productImageUrl} />
-                <div className='text-lg font-bold'>{product.title}</div>
+                <div className='text-lg font-bold'>{product.name}</div>
                 <div>{product.externalNote}</div>
                 <div className="flex flex-row gap-4">
                     <div className="justify-start flex-1">

@@ -14,7 +14,7 @@ const CartList = ({ carts, displayToast, formatPrice, updateCartQuantityInState 
                         <img src={cart.product.productImageUrl} className="w-40 h-24" />
                     </div>
                     <div className="flex flex-col justify-center">
-                        <span>{cart.product.title}</span>
+                        <span>{cart.product.name}</span>
                         <span>{formatPrice(cart.product.price)}</span>
                     </div>
                 </div>

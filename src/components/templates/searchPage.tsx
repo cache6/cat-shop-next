@@ -9,6 +9,9 @@ import { Category } from '@/entities/category';
 import { Product } from '@/entities/product';
 import Sort from '@/components/atoms/sort';
 import { FilterOptionsProps } from '@/components/atoms/filterOptions';
+import axios from 'axios';
+import { useQuery } from 'react-query'
+
 
 function KeywordDisplay() {
     const searchParams = useSearchParams();
@@ -19,6 +22,8 @@ function KeywordDisplay() {
         </div>
     );
 }
+
+
 
 const SearchPage = () => {
     const [currentPage, setCurrentPage] = useState(1);
@@ -31,27 +36,31 @@ const SearchPage = () => {
 
 
 
-    useEffect(() => {
-        const perPage = 8;  // 페이지당 제품 수 설정
-        // API 호출 함수
-        const fetchProducts = async () => {
-            // API 호출 로직 (더미 데이터로 대체)
-            const fetchedProducts: Product[] = [
-                { id: 1, title: "제품 1", externalNote: '상세 설명1', tag: '태그1', price: 100, productImageUrl: '/images/cat_3.png', isRecommended: true, category: { id: 1, name: "Category 1", categoryImageUrl: "/images/cat_category.png" } },
-                { id: 2, title: "제품 2", externalNote: '상세 설명2', tag: '태그2', price: 150, productImageUrl: '/images/cat_3.png', isRecommended: true, category: { id: 2, name: "Category 2", categoryImageUrl: "/images/cat_category.png" } },
-                { id: 3, title: "제품 3", externalNote: '상세 설명3', tag: '태그3', price: 200, productImageUrl: '/images/cat_3.png', isRecommended: true, category: { id: 3, name: "Category 3", categoryImageUrl: "/images/cat_category.png" } },
-                { id: 4, title: "제품 4", externalNote: '상세 설명4', tag: '태그4', price: 250, productImageUrl: '/images/cat_3.png', isRecommended: true, category: { id: 4, name: "Category 4", categoryImageUrl: "/images/cat_category.png" } },
-                { id: 5, title: "제품 5", externalNote: '상세 설명5', tag: '태그5', price: 300, productImageUrl: '/images/cat_3.png', isRecommended: true, category: { id: 5, name: "Category 5", categoryImageUrl: "/images/cat_category.png" } },
-                { id: 6, title: "제품 6", externalNote: '상세 설명6', tag: '태그6', price: 350, productImageUrl: '/images/cat_3.png', isRecommended: true, category: { id: 6, name: "Category 6", categoryImageUrl: "/images/cat_category.png" } },
-                { id: 7, title: "제품 7", externalNote: '상세 설명7', tag: '태그7', price: 400, productImageUrl: '/images/cat_3.png', isRecommended: true, category: { id: 7, name: "Category 7", categoryImageUrl: "/images/cat_category.png" } },
-                { id: 8, title: "제품 8", externalNote: '상세 설명8', tag: '태그8', price: 450, productImageUrl: '/images/cat_3.png', isRecommended: true, category: { id: 8, name: "Category 8", categoryImageUrl: "/images/cat_category.png" } },
-            ];
+    // useEffect(() => {
+    //     const perPage = 8;  // 페이지당 제품 수 설정
+    //     // API 호출 함수
+    //     const fetchProducts = async () => {
 
-            setProducts(fetchedProducts);
-        };
+    //         // API 호출 로직 (더미 데이터로 대체)
+    //         const fetchedProducts: Product[] = [
+    //             { id: 1, name: "제품 1", externalNote: '상세 설명1', tag: '태그1', price: 100, productImageUrl: '/images/cat_3.png', isRecommended: true, category: { id: 1, name: "Category 1", categoryImageUrl: "/images/cat_category.png" } },
+    //             { id: 2, name: "제품 2", externalNote: '상세 설명2', tag: '태그2', price: 150, productImageUrl: '/images/cat_3.png', isRecommended: true, category: { id: 2, name: "Category 2", categoryImageUrl: "/images/cat_category.png" } },
+    //         //     { id: 3, name: "제품 3", externalNote: '상세 설명3', tag: '태그3', price: 200, productImageUrl: '/images/cat_3.png', isRecommended: true, category: { id: 3, name: "Category 3", categoryImageUrl: "/images/cat_category.png" } },
+    //         //     { id: 4, name: "제품 4", externalNote: '상세 설명4', tag: '태그4', price: 250, productImageUrl: '/images/cat_3.png', isRecommended: true, category: { id: 4, name: "Category 4", categoryImageUrl: "/images/cat_category.png" } },
+    //         //     { id: 5, name: "제품 5", externalNote: '상세 설명5', tag: '태그5', price: 300, productImageUrl: '/images/cat_3.png', isRecommended: true, category: { id: 5, name: "Category 5", categoryImageUrl: "/images/cat_category.png" } },
+    //         //     { id: 6, name: "제품 6", externalNote: '상세 설명6', tag: '태그6', price: 350, productImageUrl: '/images/cat_3.png', isRecommended: true, category: { id: 6, name: "Category 6", categoryImageUrl: "/images/cat_category.png" } },
+    //         //     { id: 7, name: "제품 7", externalNote: '상세 설명7', tag: '태그7', price: 400, productImageUrl: '/images/cat_3.png', isRecommended: true, category: { id: 7, name: "Category 7", categoryImageUrl: "/images/cat_category.png" } },
+    //         //     { id: 8, name: "제품 8", externalNote: '상세 설명8', tag: '태그8', price: 450, productImageUrl: '/images/cat_3.png', isRecommended: true, category: { id: 8, name: "Category 8", categoryImageUrl: "/images/cat_category.png" } },
+    //         ];
 
-        fetchProducts();
-    }, [keyword, category, sort, currentPage, selectedOptions]);  // 필터 또는 페이지 변경 시 API 호출
+    //         // setProducts(fetchedProducts);
+    //     };
+
+    //     fetchProducts();
+    // }, [keyword, category, sort, currentPage, selectedOptions]);  // 필터 또는 페이지 변경 시 API 호출
+
+
+
 
     const handleKeywordChange = (newKeyword: string) => {
         setKeyword(newKeyword);
@@ -121,5 +130,6 @@ const SearchPage = () => {
         </>
     );
 };
+
 
 export default SearchPage;
